@@ -1,0 +1,19 @@
+%h1= t('.feedbacks')
+
+%table.table.table-striped
+  %tr
+    %th= han(Feedback, :id)
+    %th= han(Feedback, :reason)
+    %th= han(Feedback, :author)
+    %th= han(Feedback, :email)
+    %th= han(Feedback, :created_at)
+    %th
+
+  - @feedbacks.each do |feedback|
+    %tr
+      %td= feedback.id
+      %td= feedback.reason_text
+      %td= feedback.author
+      %td= feedback.email
+      %td= feedback.created_at.in_time_zone("Moscow").to_s(:report_with_timezone)
+      %td= link_to t('show'), admin_feedback_path(feedback), class: 'btn btn-primary btn-mini'

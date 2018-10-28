@@ -1,0 +1,110 @@
+// Filter
+.fareast-filter-row
+  max-width: 1280px
+  position: relative
+.fmap-navbar
+  background-color: $chathams_blue
+  width: 100%
+  padding: 15px 0 11px
+  position: absolute
+  top: 78px
+.fmap-navbar-control-element
+  height: 32px
+  border: 1px solid $bermuda_gray
+  background-color: $chathams_blue
+  color: $white
+  font-size: 16px
+  box-sizing: border-box
+  font-family: 'PT Sans' !important
+  border-radius: 0 !important
+  display: block
+  margin: 0
+  padding: 0
+  width: 100%
+  &:focus,
+  &:active
+    outline: none
+
+.fmap-navbar-control
+  float: left
+  overflow: hidden
+  width: 23.5%
+  margin-left: 2%
+  &:first-child
+    margin-left: 0
+  select,
+  input[type="text"]
+    @extend .fmap-navbar-control-element
+  input[type="text"]
+    padding: 0 36px 0 10px
+    background-color: $white
+    height: 36px
+    color: $black
+    &::-webkit-input-placeholder
+      color: $hoki
+      font-style: italic
+    &:-moz-placeholder
+      color: $hoki
+      font-style: italic
+    &::-moz-placeholder
+      color: $hoki
+      font-style: italic
+    &:-ms-input-placeholder
+      color: $hoki
+      font-style: italic
+  &:first-child
+    margin-left: 0
+
+  .customSelect
+    @extend .fmap-navbar-control-element
+    background: inline("fmap-navbar-arrow.png") right 12px no-repeat
+  .customSelectInner
+    padding: 7px 36px 0 10px
+    height: 32px
+    white-space: nowrap
+    overflow: hidden
+    text-overflow: ellipsis
+    width: 100%
+    box-sizing: border-box
+  .customSelectDisabled
+    color: $hoki
+
+.fmap-navbar-search-control
+  position: absolute
+  left: 76.5%
+  top: -72px
+  margin: 0
+  float: none
+.fmap-search-form
+  position: relative
+.fmap-search-button
+  background: inline("fmap-navbar-search.png") center center no-repeat
+  width: 38px
+  height: 38px
+  cursor: pointer
+  border: none
+  position: absolute
+  right: 0
+  top: 0
+  &:focus
+    outline: none
+
+// Map
+.yandex-map
+  margin-left: 361px
+ya-map
+  width: 100%
+  height: 100%
+  min-height: 650px
+  display: block
+.yandex-map-wrap
+  margin-left: 400px
+.ymaps-map-ru
+  background: none !important
+
+.ymaps-image-with-content-content
+  ymaps
+    width: 32px !important
+    display: inline-block
+    font-size: 10px
+    font-family: "PT Sans Caption", sans-serif

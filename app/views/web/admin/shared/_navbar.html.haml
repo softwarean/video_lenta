@@ -1,0 +1,15 @@
+= nav_bar static: :top, brand: t('title'), brand_link: :admin_root do
+  - menu_group pull: :left do
+    = menu_item t('.building_list'), admin_buildings_path
+
+    - if current_user.can_read?(User.new)
+      = menu_item t('.user_list'), admin_users_path
+
+    - if current_user.can_read?(Report.new)
+      = menu_item t('.reports'), admin_reports_path
+
+    = menu_item t('.feedback'), admin_feedback_index_path
+
+    = menu_divider
+    - if signed_in?
+      = menu_item t('.sign_out'), admin_session_path, {method: :delete}

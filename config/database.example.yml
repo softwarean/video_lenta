@@ -1,0 +1,26 @@
+default: &default
+  host: localhost
+  adapter: postgresql
+  encoding: unicode
+  username: postgres
+  password:
+  pool: 5
+
+development:
+  <<: *default
+  database: video_lenta_development
+
+test:
+  <<: *default
+  database: video_lenta_test
+
+staging:
+  <<: *default
+  database: video_lenta_staging
+  username: video_lenta_staging_user
+  password: video_lenta_staging_password
+
+production:
+  <<: *default
+  database: video_lenta_production
+  username: video_lenta_production_user

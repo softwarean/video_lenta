@@ -1,0 +1,9 @@
+%ul
+  %li= link_to t('.building_list'), admin_buildings_path
+  - if current_user.can_read?(User.new)
+    %li= link_to t('.user_list'), admin_users_path
+
+  - if current_user.can_read?(Report.new)
+    %li= link_to t('.reports'), admin_reports_path
+
+  %li= link_to t('.feedback'), admin_feedback_index_path

@@ -1,0 +1,23 @@
+%h3
+  %a{"data-toggle" => "collapse", href: "#building_search_form"}= t('.filter')
+= search_form_for [:admin, @q] do |f|
+  #building_search_form.collapse
+    .well
+      .row-fluid
+        .span3
+          = f.label :name
+          = f.search_field :name_cont
+        .span3
+          = f.label han(Broadcasting, 'slug')
+          = f.search_field :broadcasting_slug_cont
+        .span3
+          = f.label :_region
+          = f.select :district_region_name_eq, Region.pluck(:name), include_blank: true
+        .span3
+          = f.label :state
+          = f.select :state_eq, human_state_select_options(Building), include_blank: true
+      .row-fluid
+        .span1
+          = f.submit class: 'btn btn-primary'
+        .span2
+          = link_to t('.no_filter'), admin_buildings_path, class: 'btn btn-warning'

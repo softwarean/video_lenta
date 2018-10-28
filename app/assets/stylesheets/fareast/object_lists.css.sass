@@ -1,0 +1,325 @@
+// Tabs
+.tab-content
+  .tab-pane
+    display: none
+    &.active
+      display: block
+
+.app-wrap
+  position: relative
+
+.nav-tabs
+  @extend .fareast-row
+  background-color: $pampas
+  padding-top: 20px
+  padding-bottom: 20px
+  overflow: hidden
+  margin-bottom: 62px
+  li
+    float: left
+    font-weight: bold
+    border: 1px solid $loblolly
+    border-left: none
+    &:first-child
+      border-left: 1px solid $loblolly
+    &.active
+      a
+        color: $black
+    &.view-map
+      background: inline("tabs-icon-map.png") 16px 8px no-repeat
+      &.active
+        background: inline("tabs-icon-map-active.png") 16px 8px no-repeat
+    &.view-list
+      background: inline("tabs-icon-list.png") 16px 11px no-repeat
+      &.active
+        background: inline("tabs-icon-list-active.png") 16px 11px no-repeat
+    &.view-tile
+      background: inline("tabs-icon-tile.png") 16px 11px no-repeat
+      &.active
+        background: inline("tabs-icon-tile-active.png") 16px 11px no-repeat
+  a
+    display: block
+    cursor: pointer
+    padding: 11px 16px 9px 37px
+    font-size: 16px
+    color: $azure
+
+// Animation
+.ng-animate-show
+  opacity: 1
+  transition: opacity 0.3s linear
+  &.loading
+    opacity: 0
+
+.is-loading
+  height: 500px
+
+// Result panel
+.fmap-panel
+  width: 360px
+  height: 650px
+  border-right: 1px solid $loblolly
+
+.fmap-panel-header
+  background-color: $pampas
+  color: $black
+  font-size: 16px
+  padding: 16px 30px
+  border-bottom: 1px solid $loblolly
+  max-height: 49px
+  font-weight: bold
+
+.fmap-panel-body
+  max-height: 601px
+  overflow: auto
+  height: 602px
+  background-color: $white
+
+.fmap-item
+  border-bottom: 1px solid $silver
+  position: relative
+  p
+    margin-bottom: 12px
+    color: $black
+    font-size: 12px
+    line-height: 18px
+    font-family: 'PT Sans Caption'
+  a
+    color: $azure
+
+.fmap-item-name
+  color: $azure
+  font-size: 14px
+  line-height: 18px
+  font-family: 'PT Sans Caption'
+  font-weight: bold
+  margin-bottom: 4px
+
+.fmap-item-link
+  display: block
+  padding: 24px 20px 20px 70px
+  text-decoration: none
+
+.fmap-item-number
+  font-size: 10px
+  width: 20px
+  height: 20px
+  color: $midnight_blue
+  border: 2px solid $azure_radiance
+  border-radius: 20px
+  text-align: center
+  line-height: 21px
+  position: absolute
+  left: 30px
+  top: 20px
+
+.fmap-item-control-button
+  text-decoration: none
+  display: inline-block
+  color: $black
+  font-size: 14px
+  line-height: 14px
+  font-family: 'PT Sans', Arial
+  padding: 10px 20px
+  border: 1px solid transparent
+  margin-right: 10px
+
+.fmap-item-button-broadcast
+  @extend .fmap-item-control-button
+  border-color: $silver
+  background-position: 14px 12px
+  background-size: 13px 8px
+  background-repeat: no-repeat
+  padding-left: 34px
+  &.active
+    background-image: inline("icon-translation-active.png")
+  &.inactive
+    background-image: inline("icon-translation-inactive.png")
+  &.outdated
+    background-image: inline("icon-translation-outdated.png")
+  &.finished
+    background-image: inline("icon-translation-finished.png")
+.fmap-item-button-inline
+  border: none
+  margin: 0
+  padding: 0 0 0 20px
+  background-position: 0 2px
+  min-height: 8px
+
+.fmap-panel-iphone
+  display: none
+
+// List view
+.fmap-panel-wide
+  width: 100%
+  height: auto
+  border-right: none
+  .fmap-panel-body
+    height: auto
+    max-height: none
+  .fmap-item-link
+    padding-left: 30px
+    padding-right: 30px
+  .fmap-item-wrap
+    max-width: 1280px
+  .fmap-item-info
+    width: 76.5%
+    float: left
+  .fmap-item-summary
+    margin-right: 26px
+    display: inline-block
+    vertical-align: top
+  .fmap-item-number
+    position: relative
+    left: 0
+    top: -4px
+    display: inline-block
+    vertical-align: top
+    margin-right: 12px
+  .fmap-item-controls
+    float: left
+
+// Tile view
+.fmap-panel-tile
+  width: 100%
+  height: auto
+  border-right: none
+  .fmap-panel-body
+    height: auto
+    max-height: none
+    padding: 30px 15px 0
+  .fmap-item
+    width: 380px
+    height: 285px
+    overflow: auto
+    display: inline-block
+    vertical-align: middle
+    margin: 0 15px 30px 15px
+    position: relative
+  .fmap-item-image-background
+    width: 380px
+    height: 285px
+    background: inline("no_photo.png") center center no-repeat $loblolly
+    overflow: hidden
+  .fmap-item-image
+    width: inherit
+    height: inherit
+    display: block
+  .fmap-item-link
+    width: 100%
+    height: 100%
+    margin: 0
+    padding: 0
+    display: block
+    position: relative
+  .fmap-item-number
+    left: 20px
+    top: 20px
+    background-color: $white
+  .fmap-item-summary
+    position: absolute
+    width: 100%
+    bottom: 0
+    left: 0
+    background: rgba(0,0,0,0.3)
+    color: $white
+    padding: 20px 0
+    font-family: 'PT Sans Caption'
+    font-size: 12px
+    line-height: 18px
+    p
+      padding: 0 20px
+      margin-bottom: 0
+      color: $white
+    b
+      display: block
+      font-size: 14px
+      margin-bottom: 4px
+  .fmap-item-controls
+    position: absolute
+    right: 20px
+    top: 20px
+    background: rgba(0,0,0,0.3)
+  .fmap-item-button-broadcast
+    margin: 0
+    padding: 10px 16px 10px 37px
+    font-size: 12px
+    color: $white
+    background-position: 14px 13px
+    border: none
+
+// Baloon on map
+.fmap-item-baloon
+  border: none
+  padding-left: 12px
+  padding-right: 12px
+  .fmap-item-summary
+    text-align: left !important
+  .fmap-item-link
+    padding-left: 50px
+    position: relative
+  .fmap-item-number
+    left: 10px
+
+// Clustered baloon
+.ymaps-balloon__content
+  padding: 0 !important
+  margin-right: 0 !important
+.ymaps-balloon__close
+  top: 5px !important
+
+.fmap-panel-cluster
+  width: 100%
+  height: auto
+  border-right: 1px solid $silver
+  td
+    vertical-align: top
+  .fmap-item
+    border-bottom: 1px solid $silver
+    width: 100%
+    &:last-child
+      border-bottom: none
+  .fmap-panel-header
+    font-family: 'PT Sans'
+    width: 100%
+    padding-left: 22px
+    background-color: $white
+    box-sizing: border-box
+  .fmap-panel-body
+    height: auto
+    max-height: 340px
+  .fmap-item-link
+    padding-left: 22px
+    width: 100%
+    box-sizing: border-box
+    position: relative
+  .fmap-item-summary
+    width: 350px
+    margin-right: 34px
+    display: inline-block
+    vertical-align: top
+  .fmap-item-number
+    position: relative
+    left: 0
+    top: -4px
+    display: inline-block
+    vertical-align: top
+    margin-right: 12px
+  .fmap-item-controls
+    display: inline-block
+  .fmap-item-button-broadcast
+    width: 13px
+    height: 8px
+    padding: 10px
+    font-size: 0
+    background-position: 10px 10px
+
+// Nearest objects
+.fmap-panel-buildings
+  .fmap-item
+    border-top: 1px solid $silver
+    border-bottom: none
+    padding: 0 30px
+  .fmap-item-link
+    padding-left: 0
+    padding-right: 0

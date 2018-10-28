@@ -1,0 +1,27 @@
+%h1= t('.changes_list')
+
+%table.table
+  %tr
+    %th= t('.model_name')
+    %th= t('.id')
+    %th= t('.updated_at')
+    %th= t('.user')
+    %th= t('.action')
+    %th= t('.changes')
+
+  - @audits.each do |audit|
+    %tr
+      %td= audit.auditable_type
+      %td= audit.auditable_id
+      %td= audit.created_at.in_time_zone('Moscow').to_s(:report_with_timezone)
+      %td= User.find(audit.user_id).email if audit.user_id
+      %td= audit.action
+      %td
+        .accordion{id: "accordion_#{audit.id}"}
+          .accordion-group
+            .accordion-heading
+              = link_to t('.changes'), "#collapse_#{audit.id}", class: "accordion-toggle",
+              "data-parent" => "#accordion_#{audit.id}", "data-toggle" => "collapse"
+            .accordion-body.collapse{id: "collapse_#{audit.id}"}
+              .accordion-inner
+                %pre= audit.latest_diff.to_yaml

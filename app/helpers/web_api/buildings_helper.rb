@@ -1,0 +1,2 @@
+module WebApi::BuildingsHelper
+end

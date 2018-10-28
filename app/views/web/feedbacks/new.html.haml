@@ -1,0 +1,19 @@
+.fareast-row.fareast-row-bottom
+  .form-summary
+  .fareast-form
+    = simple_form_for @feedback, url: feedback_path, html: { honeypot: true } do |f|
+      = f.input :reason
+
+      = f.input :author
+
+      = f.input :email
+
+      = f.input :text, rows: "20", cols: "10",
+
+      = f.input "user_data[user_agent]", as: :hidden, input_html: { value: request.user_agent }
+      = f.input "user_data[referer]", as: :hidden, input_html: { value: referer }
+      = f.input "user_data[ip]", as: :hidden, input_html: { value: request.remote_ip }
+
+      .control-group
+        .controls
+          = f.submit "Send message"

@@ -1,0 +1,2 @@
+module WebApi::RegionsHelper
+end

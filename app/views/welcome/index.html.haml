@@ -1,0 +1,83 @@
+%div.app-wrap{"ng-controller" => "Map"}
+
+  %div.loader{"ng-hide" => "showTabContent"}
+
+  = render("web/shared/filter")
+
+  %div{"ng-controller" => "Tab", "ng-class" => "{'is-loading': !showTabContent}"}
+    %tabset
+      %tab.view-map{heading: "Карта", select: "mapRedraw(); saveActiveTab('map')", active: "isActiveMapTab"}
+        %div.ng-animate-show{"ng-class" => "{loading: !showTabContent}"}
+          .fmap-panel.fmap-panel-wide.fmap-panel-iphone
+            .fmap-panel-header
+              Found: {{buildings.length}}
+          .fmap
+            .fmap-panel.fmap-panel-map.pull-left
+              .fmap-panel-header
+                Found: {{buildings.length}}
+
+              .fmap-panel-body
+                .fmap-item{"ng-repeat" => "building in buildings", "on-finish-render" => ""}
+                  %a.fmap-item-link{href: "{{building.getPath()}}", target: "_blank"}
+                    .fmap-item-number {{building.number}}
+                    .fmap-item-summary
+                      .fmap-item-name
+                        {{building.name}}
+                      %p
+                        {{building.region.name}},
+                        {{building.district}},
+                        {{building.locality}}
+                    .fmap-item-controls
+                      .fmap-item-button-broadcast{class: "{{building.status}}"}
+                        %span.fmap-broadcast-name {{building.statusname}}
+
+            .yandex-map
+              %ya-map{"ya-center" => "[50.633575, 125.986783]", "ya-zoom" => "5", "ya-source" => "buildings", "ya-icon-image-href" => asset_path("yamap-pin.png")}
+
+            .clearfix
+
+      %tab.view-list{heading: "Список", select: "saveActiveTab('list')", active: "isActiveListTab"}
+        .fmap-panel.fmap-panel-wide.ng-animate-show{"ng-class" => "{loading: !showTabContent}"}
+          .fmap-panel-header
+            Найдено объектов: {{buildings.length}}
+
+          .fmap-panel-body
+            .fmap-item{"ng-repeat" => "building in buildings", "on-finish-render" => ""}
+              %a.fmap-item-link{href: "{{building.getPath()}}", target: "_blank"}
+                .fmap-item-wrap
+                  .fmap-item-info
+                    .fmap-item-number {{building.number}}
+                    .fmap-item-summary
+                      .fmap-item-name
+                        {{building.name}}
+                      %p
+                        {{building.region.name}},
+                        {{building.district}},
+                        {{building.locality}}
+                  .fmap-item-controls
+                    .fmap-item-button-broadcast{class: "{{building.status}}"}
+                      %span.fmap-broadcast-name {{building.statusname}}
+                  .clearfix
+
+      %tab.view-tile{heading: "Галерея", select: "loadImages(); saveActiveTab('gallery')", active: "isActiveGalleryTab"}
+        .fmap-panel.fmap-panel-tile.ng-animate-show{"ng-class" => "{loading: !showTabContent}"}
+          .fmap-panel-header
+            Found: {{buildings.length}}
+
+          .fmap-panel-body
+            .fmap-item{"ng-repeat" => "building in buildings", "ng-if" => "showImages", "on-finish-render" => ""}
+              %a.fmap-item-link{href: "{{building.getPath()}}", target: "_blank"}
+                .fmap-item-image-background
+                  %img.fmap-item-image{"bn-lazy-src" => "{{building.getImagePath()}}"}
+                .fmap-item-number {{building.number}}
+                .fmap-item-controls
+                  .fmap-item-button-broadcast{class: "{{building.status}}"}
+                    %span.fmap-broadcast-name {{building.statusname}}
+                .fmap-item-summary
+                  %p
+                    %b {{building.name}}
+                    {{building.region.name}},
+                    {{building.district}},
+                    {{building.locality}}
+
+            .clearfix

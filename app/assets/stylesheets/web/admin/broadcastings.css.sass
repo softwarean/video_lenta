@@ -1,0 +1,60 @@
+.broadcast-timestamps
+  font-size: 12px
+  td
+    border-top: none
+.broadcast-timestamps-filter
+  .btn-info .text-info
+    color: #fff !important
+  table:focus
+    outline: none !important
+.timestamp
+  width: 13px
+  height: 13px
+  display: inline-block
+  background-color: #f3dede
+  font-size: 0
+  margin: 0 2px
+.timestamp-available
+  background-color: #2ca713
+
+#dataIsNotAvailable
+  display: none
+
+// Loader
+.loader
+  text-indent: -9999em
+  width: 20px
+  height: 20px
+  border-radius: 50%
+  background: #ccc
+  background: linear-gradient(to right, #ccc 10%, rgba(255, 255, 255, 0) 42%)
+  position: relative
+  animation: loader 1.4s infinite linear
+  &:before
+    width: 50%
+    height: 50%
+    background: #ccc
+    border-radius: 100% 0 0 0
+    position: absolute
+    top: 0
+    left: 0
+    content: ''
+  &:after
+    background: #fff
+    width: 75%
+    height: 75%
+    border-radius: 50%
+    content: ''
+    margin: auto
+    position: absolute
+    top: 0
+    left: 0
+    bottom: 0
+    right: 0
+
+
+@keyframes loader
+  0%
+    transform: rotate(0deg)
+  100%
+    transform: rotate(360deg)

@@ -1,0 +1,21 @@
+%h3= Feedback.human_attribute_name('reason')
+%p= @feedback.reason.text
+
+- if @feedback.author.present?
+  %h3= Feedback.human_attribute_name('author')
+  %p= @feedback.author
+
+- if @feedback.email.present?
+  %h3= Feedback.human_attribute_name('email')
+  %p= @feedback.email
+
+%h3= Feedback.human_attribute_name('text')
+%p= @feedback.text
+
+- if @feedback.user_data[:referer].present?
+  %h3= t('.referer')
+  %p= link_to @feedback.user_data[:referer], @feedback.user_data[:referer]
+
+- if @feedback.user_data[:user_agent].present?
+  %h3= t('.user_data')
+  %p= @feedback.user_data[:user_agent]

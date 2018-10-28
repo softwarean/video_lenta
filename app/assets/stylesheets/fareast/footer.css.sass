@@ -1,0 +1,57 @@
+// Foooter
++sticky-footer(200px, ".footer")
+.footer
+  background-color: $pampas
+  color: $black
+  font-family: 'PT Sans Caption', 'PT Sans', Arial
+  a
+    color: $azure
+
+.footer-copyright
+  padding: 47px 0 20px
+  text-transform: uppercase
+  font-size: 12px
+  line-height: 18px
+  width: 500px
+  font-weight: bold
+
+.footer-annotation
+  font-size: 12px
+  line-height: 18px
+  width: 520px
+
+.footer-contacts
+  padding-top: 45px
+  padding-left: 60px
+  padding-right: 60px
+  font-size: 12px
+  line-height: 23px
+
+.social-buttons
+  padding-top: 46px
+
+.feedback-link
+  font-size: 12px
+  display: inline-block
+  padding-top: 5px
+  margin-left: 6px
+  text-decoration: none
+  span
+    text-decoration: underline
+.icon-envelope
+  display: inline-block
+  width: 17px
+  height: 11px
+  background-image: asset_url("envelope.svg")
+  background-size: 300px 250px
+  background-repeat: no-repeat
+  background-position: -141px -120px
+  margin-right: 4px
+  position: relative
+  top: 1px
+
+@media only screen and (max-width : 1146px)
+  .footer
+    height: 280px
+  body
+    margin-bottom: 280px

@@ -1,0 +1,28 @@
+%p
+  = link_to t('new'), new_admin_building_path, class: 'btn btn-primary'
+
+= render 'search_form'
+
+%table.table.table-striped
+  %tr
+    %th= han(Building, :id)
+    %th= han(Building, :name)
+    %th= han(Building, :region)
+    %th= han(Building, :state)
+    %th= han(Broadcasting, :slug)
+    %th
+    %th
+    %th
+
+  - @buildings.each do |building|
+    %tr
+      %td= building.id
+      %td= building.name
+      %td= building.region
+      %td= building.human_state_name
+      %td= building.broadcasting.slug
+      %td= link_to t('destroy'), admin_building_path(building), method: :delete, class: 'btn btn-danger btn-mini', data: { confirm: t('.confirm_delete') }
+      %td= link_to t('edit'), edit_admin_building_path(building), class: 'btn btn-primary btn-mini'
+      %td= link_to t('.monitoring'), monitoring_admin_building_path(building), class: 'btn btn-success btn-mini'
+
+%br

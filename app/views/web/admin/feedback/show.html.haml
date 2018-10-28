@@ -1,0 +1,36 @@
+%h1= "#{Feedback.model_name.human} ##{@feedback.id}"
+
+%p= link_to t('.back'), admin_feedback_index_path
+
+%p
+  %b= han(Feedback, :reason)
+%p= @feedback.reason.text
+
+%p
+  %b= han(Feedback, :created_at)
+%p= @feedback.created_at.in_time_zone("Moscow").to_s(:report_with_timezone)
+
+- if @feedback.author.present?
+  %p
+    %b= han(Feedback, :author)
+  %p= @feedback.author
+
+- if @feedback.email.present?
+  %p
+    %b= han(Feedback, :email)
+  %p= @feedback.email
+
+%p
+  %b= han(Feedback, :text)
+%p= @feedback.text
+
+- if @feedback.user_data.present?
+  - if @feedback.user_data[:referer].present?
+    %p
+      %b= t('.referer')
+    %p= link_to @feedback.user_data[:referer], @feedback.user_data[:referer]
+
+  - if @feedback.user_data[:user_agent].present?
+    %p
+      %b= t('.user_data')
+    %p= @feedback.user_data[:user_agent]

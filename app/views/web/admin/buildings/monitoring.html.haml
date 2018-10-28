@@ -1,0 +1,46 @@
+.row-fluid
+  .span9
+    %h1= @broadcasting.slug
+    %p= link_to t('.back'), admin_buildings_path
+    %p
+      %b
+        = Building.model_name.human
+        \:
+        = link_to @broadcasting.building.name, edit_admin_building_path(@broadcasting.building)
+
+    %p
+      %b
+        = han(Broadcasting, :state)
+        \:
+        = @broadcasting.human_state_name
+    %p
+      = han(Broadcasting, :camera_type)
+      \:
+      %b
+        = @broadcasting.camera_type.upcase
+    - if @broadcasting.has_image?
+      %p
+        = han(Broadcasting, :last_frame_time)
+        \:
+        = camera_last_frame_time(@broadcasting).in_time_zone("Moscow").to_s(:report)
+        MSK
+
+  .span3
+    - if @broadcasting.has_image?
+      = image_tag @broadcasting.last_frame_url, {width: 380, heigth: 285, class: "img-polaroid"}
+%br
+
+%div{"ng-controller" => "BroadcastAvailability"}
+  .well.broadcast-timestamps-filter
+    .form-inline
+      %input{"datepicker-popup" => "yyyy/MM/dd", "datepicker-options" => "{startingDay: 1, showWeeks: 'false'}", "is-open" => "opened", "ng-model" => "availabilityDate", "ng-required" => "true", type: "text", "ng-click" => "open($event)", readonly: "readonly"}
+
+  %table.table.table-condensed.broadcast-timestamps
+    %tr.hour{"ng-repeat" => "hour in allTimestampsGroupByHours"}
+      %td
+        {{hour.title}}:00
+      %td
+        %a.timestamp{"ng-repeat" => "timestamp in hour.timestamps", "ng-class" => "{'timestamp-available': isAvailableTimestamp(timestamp.value)}", title: "{{timestamp.title}}"}
+
+  #dataIsNotAvailable{"ng-hide" => "allTimestampsGroupByHours"}
+    %h3= t('.not_available')

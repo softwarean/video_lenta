@@ -1,0 +1,2 @@
+module Api::BroadcastingsHelper
+end

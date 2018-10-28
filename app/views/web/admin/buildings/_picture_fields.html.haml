@@ -1,0 +1,6 @@
+.nested-fields
+  = f.input :name
+  = image_tag f.object.file.thumb.url unless f.object.new_record?
+  = f.input :file
+  %p
+    = link_to_remove_association t('destroy'), f, class: 'btn btn-danger btn-mini'

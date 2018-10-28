@@ -1,0 +1,232 @@
+@mixin iphone_styles
+
+  html
+    -webkit-text-size-adjust: 100%
+
+  // Disable font boosting in Chrome - Android
+  html *
+    max-height: 1000000px
+
+  .pull-left
+    float: none !important
+
+  body,
+  .fareast-row,
+  .footer
+    min-width: 320px
+    width: auto
+
+  .motto-logo
+    position: relative
+    left: -10px
+
+  .motto-about-link
+    right: 30px
+
+  body
+    margin-bottom: 196px
+
+  .footer
+    height: 166px
+    overflow: hidden
+    padding-bottom: 30px
+    width: 100%
+    .pull-left
+      float: none !important
+
+  .footer-annotation,
+  .contacts-details,
+  .footer-contacts
+    display: none
+  .social-buttons
+    padding-top: 0
+    position: relative
+    left: -6px
+  .feedback-link
+    margin-left: 5px
+
+  // Header
+  .motto
+    padding: 20px 0
+    .fareast-row
+      padding-right: 0
+
+  // Tabs
+  .nav-tabs
+    a
+      padding-top: 10px
+      padding-bottom: 10px
+
+  // Filter
+  .fmap-navbar
+    padding-bottom: 0
+  .fmap-navbar-control
+    float: none
+    margin: 0 0 15px
+    width: 100%
+  .fmap-navbar-search-control
+    position: relative
+    left: 0
+    top: 0
+  .fmap-navbar-control input[type="text"]
+    background-color: $chathams_blue
+    border: 1px solid $bermuda_gray
+    color: $white
+    height: 32px
+  .fmap-search-button
+    width: 36px
+    height: 32px
+
+  .fmap-navbar-control-element,
+  .fmap-navbar-control select,
+  .fmap-navbar-control input[type="text"],
+  .fmap-navbar-control .customSelect
+    width: 100%
+
+  // Map
+  .fmap-panel-map
+    display: none
+  .yandex-map
+    margin-left: 0
+
+  // Object lists
+  .fmap-panel-iphone
+    display: block
+
+  .fmap-panel-wide
+    .fmap-item-link
+      padding-top: 28px
+    .fmap-item
+      position: relative
+      p
+        font-size: 14px
+    .fmap-item-number
+      top: -2px
+    .fmap-item-info
+      width: 90%
+    .fmap-item-summary
+      width: 80%
+      margin-right: 0
+    .fmap-item-name
+      font-size: 16px
+      margin-bottom: 6px
+    .fmap-item-button-broadcast
+      margin-right: 0
+    .fmap-item-controls
+      position: absolute
+      right: 30px
+      top: 26px
+
+  .fmap-panel-tile
+    .fmap-panel-body
+      padding-left: 30px
+      padding-right: 30px
+    .fmap-item
+      width: 100%
+      min-height: 280px
+      max-height: 540px
+      max-width: 960px
+      height: auto
+      margin-left: 0
+      margin-right: 0
+    .fmap-item-image-background
+      width: 100%
+      min-height: 280px
+      max-height: 540px
+      height: auto
+    .fmap-item-image
+      display: block
+      width: 100%
+      max-height: 540px
+    .fmap-item-controls
+      right: 0
+      top: 0
+    .fmap-item-button-broadcast
+      border: none
+
+  .fmap-panel
+    .fmap-broadcast-name
+      display: none
+    .fmap-item-button-broadcast
+      width: 23px
+      height: 14px
+      padding: 10px
+      background-size: 23px 14px
+      background-position: 10px 10px
+
+  .fmap-item-button-inline
+    width: auto
+    background-position: 0 0
+    background-size: 23px 14px
+    padding-left: 33px
+    min-height: 14px
+
+  // Building page
+  .building-card
+    h1,
+    h2
+      background-color: $pampas
+      font-weight: bold
+      padding-top: 20px
+      padding-bottom: 24px
+      margin-bottom: 0
+      color: $black
+      font-size: 28px
+      line-height: 40px
+    h1
+      border-bottom: 1px solid $loblolly
+    h2
+      border-bottom: none
+      border-top: 1px solid $loblolly
+  .fareast-row-player
+    padding-left: 0
+    padding-right: 0
+  .building-card-content
+    min-width: 320px
+    margin-right: 0
+    h2
+      display: none
+  .building-card-info
+    padding: 0 30px
+  .building-card-summary
+    width: auto
+    padding-left: 30px
+    padding-right: 30px
+    margin-bottom: 40px
+    dt
+      font-size: 16px
+    dd
+      font-size: 16px
+      line-height: 16px
+      margin-bottom: 26px
+
+  // Forms
+  .form-summary
+    margin-bottom: 30px
+  .fareast-form
+    padding: 0
+    width: auto
+    border: none
+    overflow: hidden
+    .control-group
+      margin-bottom: 20px
+    .control-label
+      width: auto
+      float: none
+      margin-bottom: 6px
+      display: block
+    .controls
+      margin-left: 0
+      width: auto
+    input[type="text"],
+    input[type="email"],
+    input[type="submit"],
+    textarea
+      -webkit-appearance: none
+      border-radius: 0
+
+@media only screen and (max-width : 1024px)
+  @include iphone_styles
+
+@media only screen and (-webkit-min-device-pixel-ratio: 2) and (max-width: 1136px), only screen and (min--moz-device-pixel-ratio: 2) and (max-width: 1136px), only screen and (-o-min-device-pixel-ratio: 2 / 1) and (max-width: 1136px), only screen and (min-device-pixel-ratio: 2) and (max-width: 1136px), only screen and (min-resolution: 192dpi) and (max-width: 1136px), only screen and (min-resolution: 2dppx) and (max-width: 1136px)
+  @include iphone_styles

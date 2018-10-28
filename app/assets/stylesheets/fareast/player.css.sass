@@ -1,0 +1,387 @@
+.disable-selection
+  -webkit-touch-callout: none
+  -webkit-user-select: none
+  -khtml-user-select: none
+  -moz-user-select: none
+  -ms-user-select: none
+  user-select: none
+
+.b__slider
+  line-height: 1em
+  .player
+    position: relative
+    background-color: black
+
+    &.overlay
+      .left, .right
+        display: inline-block
+
+    &.overlay-hidden
+      .left, .right
+        display: none !important
+
+    &.show-loader .loader-container
+      display: inline-block
+
+    .img-placeholder
+      width: 100%
+      height: 100%
+      background-repeat: no-repeat
+      background-position: 50% 50%
+      background-size: contain
+
+    .calendar
+      position: absolute
+      top: 0
+      left: 0
+      background-color: #000
+      z-index: 3
+      padding: 13px
+      white-space: nowrap
+
+      .state-container
+        display: inline-block
+        font-family: 'PT Sans Caption', sans-serif
+        font-size: 16px
+        color: #0099ff
+
+        &.active-live .live
+          background-color: #252525
+          color: white
+
+          .live-icon
+            background-position: -320px 0px
+            -webkit-animation: video-state-blink 1s steps(2) 0s infinite normal
+            animation: video-state-blink 1s steps(2) 0s infinite normal
+
+        &.active-archive .archive
+          background-color: #252525
+          color: white
+
+        .archive, .live
+          padding: 10px
+          display: inline-block
+          cursor: pointer
+
+          &:hover
+            color: white
+
+        .live
+          position: relative
+          padding-left: 26px
+
+          .live-icon
+            position: absolute
+            top: 10px
+            left: 5px
+            width: 16px
+            height: 16px
+            background-image: inline("Sprite.png")
+            background-repeat: no-repeat
+            background-position: -336px 0px
+
+          &:hover .live-icon
+            background-position: -352px 0px
+
+      .date
+        display: inline-block
+        padding: 10px
+        height: 14px
+        font-family: 'PT Sans Caption', sans-serif
+        color: #fff
+        font-size: 16px
+        cursor: default
+
+    .calendar-container
+      background-color: black
+      bottom: 0
+      position: absolute
+      left: 70px
+      z-index: 4
+
+      .time-message
+        display: inline-block
+        color: white
+        font-family: 'PT Sans Caption', sans-serif
+        font-size: 16px
+        margin-left: 13px
+        margin-bottom: 13px
+        vertical-align: middle
+
+      .select-container
+        width: 95px
+        height: 34px
+        margin-left: 13px
+        display: inline-block
+        background: -295px -125px inline("Sprite.png") no-repeat
+        overflow: hidden
+        vertical-align: middle
+        margin-bottom: 13px
+
+        .customSelect
+          width: 95px
+          height: 34px
+          color: white
+
+          .customSelectInner
+            font-size: 16px
+            padding: 9px 17px
+            font-family: 'PT Sans Caption', sans-serif
+
+    .loader-container
+      display: none
+      position: absolute
+      top: 0
+      left: 0
+      width: 100%
+      height: 100%
+
+      .loader-wrap
+        position: absolute
+        left: 50%
+        top: 50%
+        width: 50px
+        height: 50px
+        background-color: $white
+        border-radius: 50%
+        margin-left: -25px
+        margin-top: -25px
+
+      .loader
+        top: 50%
+        left: 50%
+        margin-left: -20px
+        margin-top: -20px
+        width: 40px
+        height: 40px
+
+    .left
+      position: absolute
+      top: 0
+      left: 0
+      width: 50%
+      height: 100%
+      cursor: pointer
+      display: none
+
+      &:hover .left-arrow
+        background-position: -182px -25px
+
+      .left-arrow
+        position: absolute
+        width: 91px
+        height: 98px
+        margin-top: -49px
+        top: 50%
+        left: 0
+        background-image: inline("Sprite.png")
+        background-position: 0px -25px
+        background-repeat: no-repeat
+
+    .right
+      position: absolute
+      top: 0
+      right: 0
+      width: 50%
+      height: 100%
+      cursor: pointer
+      display: none
+
+      &:hover .right-arrow
+        background-position: -273px -25px
+
+      .right-arrow
+        position: absolute
+        width: 91px
+        height: 98px
+        margin-top: -50px
+        top: 50%
+        right: 0
+        background-image: inline("Sprite.png")
+        background-position: -91px -25px
+        background-repeat: no-repeat
+
+    .error
+      position: absolute
+      top: 0
+      left: 0
+      background-color: black
+      width: 100%
+      height: 100%
+      color: rgb(64,64,64)
+      font-size: 30px
+      font-weight: bold
+      display: none
+      z-index: 5
+
+      .no-source
+        position: absolute
+        top: 50%
+        text-align: center
+        width: 100%
+        margin-top: -15px
+        display: none
+
+  .timeline-control
+    position: relative
+    background-color: black
+    width: 100%
+    height: 50px
+    line-height: 1em
+
+    .archive, .live
+      display: none
+
+    &.active-archive .archive
+      display: block
+
+    &.active-live .live
+      display: block
+
+    &.mobile
+      .fullscreen
+        display: none !important
+
+      .timeline-wrapper
+        right: 158px !important
+
+    .live .message
+      padding-top: 17px
+      padding-left: 30px
+      color: white
+      font-size: 18px
+      font-family: 'PT Sans Caption', sans-serif
+      white-space: nowrap
+
+    .play-pause
+      position: absolute
+      top: 13px
+      left: 30px
+      width: 24px
+      height: 24px
+      cursor: pointer
+      background: inline("Sprite.png") no-repeat
+
+      &.play
+        background-position: 1px 0px
+
+        &:hover
+          background-position: -23px 0px
+
+      &.pause
+        background-position: -48px 0px
+
+        &:hover
+          background-position: -72px 0px
+
+    .calendar-icon
+      position: absolute
+      width: 16px
+      height: 16px
+      top: 17px
+      left: 83px
+      background: -240px 0 inline("Sprite.png") no-repeat
+      cursor: pointer
+
+      &:hover
+        background-position: -304px 0
+
+    .controls
+      position: absolute
+      top: 13px
+      right: 0
+      width: 212px
+      height: 100%
+      cursor: pointer
+
+      .desc
+        height: 24px
+        width: 24px
+        background: inline("Sprite.png")
+        background-position: -191px 0
+        float: right
+
+        &:hover
+          background-position: -215px 0
+
+      .inc
+        margin-right: 30px
+        height: 24px
+        width: 24px
+        background: inline("Sprite.png")
+        background-position: -144px 0
+        float: right
+
+        &:hover
+          background-position: -168px 0
+
+      .speed
+        margin-top: 4px
+        width: 47px
+        color: white
+        float: right
+        font-size: 18px
+        text-align: center
+        font-family: 'PT Sans Caption', sans-serif
+
+      .fullscreen
+        margin-right: 30px
+        width: 24px
+        height: 24px
+        background: -97px 0 inline("Sprite.png") no-repeat
+        float: right
+
+        &:hover
+          background-position: -121px 0
+
+    .timeline-wrapper
+      position: absolute
+      left: 129px
+      right: 212px
+      top: 20px
+      padding: 0px
+
+      .timeline
+        position: relative
+        height: 11px
+        background-color: #fff
+        cursor: pointer
+
+        &:hover .timeline-pointer
+          display: inline
+
+        .progres-bar
+          width: 0%
+          height: 100%
+          background-color: rgb(0,153,255)
+
+        .timeline-pointer
+          display: none
+          background: 0 -124px inline("Sprite.png") no-repeat
+          width: 66px
+          height: 45px
+          position: absolute
+          margin-left: -39px
+          bottom: -7px
+          color: #000
+          font-size: 11px
+          text-align: center
+          font-family: 'PT Sans', sans-serif
+          padding: 4px 6px
+          line-height: 1em
+
+@-webkit-keyframes video-state-blink
+  0%
+    background-position: -320px 0
+  100%
+    background-position: 100px 100px
+
+@keyframes video-state-blink
+  0%
+    background-position: -320px 0
+  100%
+    background-position: 100px 100px
+
+.ui-icon,
+.ui-widget-content .ui-icon
+  background-image: inline("Sprite.png")

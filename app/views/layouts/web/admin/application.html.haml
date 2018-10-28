@@ -1,0 +1,14 @@
+!!!
+%html
+  %head
+    %title= t('admin_title')
+    %meta
+    = include_gon(init: "true")
+    %meta
+    = stylesheet_link_tag    "admin", :media => "all"
+    = javascript_include_tag "application_admin"
+    = csrf_meta_tags
+  %body{"ng-app" => "fareastAdmin"}
+    = render 'web/admin/shared/navbar'
+    .container
+      = yield

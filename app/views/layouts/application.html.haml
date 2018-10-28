@@ -1,0 +1,46 @@
+!!! 5
+%html
+  %head
+    %title= title
+
+    %noscript
+      %meta{"http-equiv" => "refresh", content: "1;URL=/browser.html"}
+
+    /[if lt IE 9]
+      %meta{"http-equiv" => "refresh", content: "0;URL=/browser.html"}
+      :javascript
+        window.location = "/browser.html";
+
+    = include_gon
+
+    %meta{property: "og:title", content: meta_title}
+    %meta{property: "og:description", content: meta_description}
+    %meta{property: "og:image", content: asset_path("ogImage.png")}
+
+    %meta{property: "title", content: t("meta.title")}
+    %meta{name: "description", content: meta_description}
+    %meta{property: "site_name", content: t("meta.site_name")}
+
+    %meta{content: "width=device-width, initial-scale=0.55, user-scalable=no", name: "viewport"}
+
+    %script{src: "http://api-maps.yandex.ru/2.1.11/?lang=ru_RU", type: "text/javascript"}
+
+    %link{href: 'http://fonts.googleapis.com/css?family=PT+Sans:400,700|PT+Sans+Caption:400,700&subset=cyrillic-ext,cyrillic', rel: 'stylesheet', type:'text/css'}
+
+    = stylesheet_link_tag    'application', media: 'all'
+    = javascript_include_tag 'application'
+
+    :javascript
+      I18n.locale = "#{I18n.locale}";
+
+    = csrf_meta_tags
+    = render("web/shared/favicons")
+    = render("web/shared/counters")
+
+    %script{src: "/system/dfo.js", type: "text/javascript"}
+
+  %body{"ng-app" => "fareast"}
+    = render("web/shared/header")
+    = yield
+
+    = render("web/shared/footer")

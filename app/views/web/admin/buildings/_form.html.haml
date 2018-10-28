@@ -1,0 +1,51 @@
+= stylesheet_link_tag 'web/bootstrap_full_width', media: 'all'
+
+= simple_form_for([:admin, @building]) do |f|
+  = f.error_notification
+
+  %ul.nav.nav-tabs
+    - with_options data: { toggle: "tab" } do |tab|
+      %li.active
+        = tab.link_to t('.object_data'), '#data'
+      %li
+        = tab.link_to t('.broadcasting'), '#broadcasting'
+      %li
+        = tab.link_to t('.description'), '#description'
+      %li
+        = tab.link_to t('.contractors'), '#contractors'
+      %li
+        = tab.link_to t('.documents'), '#documents'
+
+  .tab-content
+    #data.tab-pane.active
+      .form-inputs
+        = f.input 'name'
+        = f.input 'state', as: :state
+        = f.input 'latitude', as: :string
+        = f.input 'longitude', as: :string
+        = f.input :district_id, collection: current_user.available_regions, as: :grouped_select, group_method: :districts, include_blank: false
+        = f.input 'locality'
+        = f.input 'start_date', as: :date_picker
+        = f.input 'finish_date', as: :date_picker
+
+    #broadcasting.tab-pane
+      = f.simple_fields_for :broadcasting, @broadcasting do |broadcasting|
+        = render 'broadcasting_fields', f: broadcasting, object: @broadcasting
+
+    #description.tab-pane
+      = f.input 'description', as: :ckeditor, input_html: { ckeditor: {toolbar: 'Standart'} }, label: false
+
+    #contractors.tab-pane
+      = f.simple_fields_for :contractors do |contractor|
+        = render 'contractor_fields', f: contractor
+      .links
+        = link_to_add_association t('new'), f, :contractors, :class => 'btn btn-primary'
+
+    #documents.tab-pane
+      = f.simple_fields_for :documents do |document|
+        = render 'document_fields', f: document
+      .links
+        = link_to_add_association t('new'), f, :documents, :class => 'btn btn-primary'
+
+  .form-actions
+    = f.button :submit

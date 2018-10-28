@@ -1,0 +1,17 @@
+.nested-fields{"ng-controller" => "FinishedDatetime"}
+
+  %div.local-datetime
+
+    %h4{"ng-show" => "finishedTimestamp"}= t("status.finished")
+
+    .control-group
+      %label.control-label= t(".broadcasting_finish_time")
+      %quick-datepicker{"ng-model" => "finishedDatetime", "date-format" => "yyyy/MM/dd", "time-format" => "HH:mm", "label-format" => "yyyy/MM/dd HH:mm", "on-change" => "updateTimestamp()"}
+      = f.input :finish_datetime, as: :hidden, ng: {model: "finishedTimestamp", init: "initFinishedTimestamp('#{@broadcasting.finish_datetime}')", value: "finishedTimestamp"}
+
+  = f.input :slug
+  = f.input :url
+  = f.input :camera_name
+  = f.input :camera_type, include_blank: false, ng: {model: "cameraType", change: "isCameraPolled()"}
+  = f.input :state, as: :state
+  = f.input :poll_camera, ng: {disabled: "disableCameraPoll()", model: "pollCamera"}

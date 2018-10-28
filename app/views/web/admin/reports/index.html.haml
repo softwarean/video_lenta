@@ -1,0 +1,30 @@
+%h1= t('.report_list')
+
+%p
+  = link_to t('create'), admin_reports_path, method: :post, class: 'btn btn-primary'
+
+%div{"ng-controller" => "Reports"}
+  %table.table.table-striped
+    %tr
+      %th= han(Report, :id)
+      %th= han(Report, :created_at)
+      %th= han(Report, :queue_state)
+      %th
+      %th
+
+    %tr{"ng-repeat" => "report in reports"}
+      %td
+        {{report.id}}
+      %td
+        {{report.createdAt}}
+      %td
+        {{report.humanQueueStateName}}
+      %td
+        %div{'ng-if' => 'report.queueState == "completed"'}
+          %a.btn.btn-primary.btn-mini{href: "{{report.getPath()}}"}
+            = t('.download')
+        %div{'ng-if' => 'report.queueState == "processing" || report.queueState == "queued"'}
+          %div.loader Loading...
+      %td
+        %a.btn.btn-danger.btn-mini{href: "{{report.getPath()}}", method: :delete}
+          = t('destroy')

@@ -1,0 +1,6 @@
+%h1= t('.sign_in_title')
+
+= simple_form_for(@session, as: :session, url: admin_session_path) do |f|
+  = f.input :email
+  = f.input :password
+  = f.button :submit, t('.sign_in')

@@ -1,0 +1,78 @@
+@mixin sticky-footer($height, $footer: unquote(".footer-layout"))
+  html
+    position: relative
+    min-height: 100%
+  body
+    margin-bottom: $height
+  #{$footer}
+    position: absolute
+    left: 0
+    bottom: 0
+    height: $height
+    width: 100%
+
+
+// Helpers
+.fareast-row
+  padding-left: 30px
+  padding-right: 30px
+  box-sizing: border-box
+  margin-left: auto
+  margin-right: auto
+.fareast-row-bottom
+  padding-bottom: 100px
+
+.pull-right
+  float: right !important
+.pull-left
+  float: left !important
+
+.clearfix
+  &:before,
+  &:after
+    content: " "
+    display: table
+  &:after
+    clear: both
+
+// Loader
+.loader
+  text-indent: -9999em
+  width: 20px
+  height: 20px
+  border-radius: 50%
+  background: $azure
+  background: linear-gradient(to right, $azure 10%, rgba(255, 255, 255, 0) 42%)
+  position: relative
+  animation: loader 1.4s infinite linear
+  position: absolute
+  left: 50%
+  top: 200px
+  margin-left: -10px
+  &:before
+    width: 50%
+    height: 50%
+    background: $azure
+    border-radius: 100% 0 0 0
+    position: absolute
+    top: 0
+    left: 0
+    content: ''
+  &:after
+    background: $white
+    width: 75%
+    height: 75%
+    border-radius: 50%
+    content: ''
+    margin: auto
+    position: absolute
+    top: 0
+    left: 0
+    bottom: 0
+    right: 0
+
+@keyframes loader
+  0%
+    transform: rotate(0deg)
+  100%
+    transform: rotate(360deg)

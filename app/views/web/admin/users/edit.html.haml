@@ -1,0 +1,6 @@
+%h1= "#{t('.edit_user')} #{@user.email}"
+
+%p
+  = link_to t('.to_user_list'), admin_users_path
+
+= render 'form'

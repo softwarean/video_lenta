@@ -1,0 +1,63 @@
+.building-card
+  %h1.fareast-row= @building.name
+
+  .fareast-row.fareast-row-player
+    .building-card-content.pull-left
+      .building-player
+        - if @building.show_broadcasting?
+
+          #slider
+
+          :javascript
+            $(function() {
+              $('body').on('analytics', function (e, number) {
+                ga('send', 'event', 'speed', number);
+              });
+
+              var slider;
+              return slider = new Slider('#slider', "#{player_uri(@building.broadcasting.slug)}", "#{player_folder_uri(@building.broadcasting.slug)}", 10, #{@building.timezone}, "#{@building.broadcasting.status}", "#{@building.broadcasting.camera_type}", #{@building.broadcasting.finish_datetime ? @building.broadcasting.finish_datetime : 'null' });
+            });
+
+      - if @building.has_description?
+        .building-card-info
+          = @building.description.html_safe
+
+    .building-card-summary.pull-left
+      %dl
+        %dd= "#{@building.region}, #{@building.district}, #{@building.locality}"
+
+        %dd= @building.locality
+
+        %dd
+          = @building.start_date
+          —
+          = @building.finish_date
+        %dd
+          .fmap-item-controls
+            .fmap-item-button-broadcast.fmap-item-button-inline{class: @building.status}
+              %span.fmap-broadcast-name= t("status.#{@building.status}")
+
+
+        - if @building.has_contractors?
+          %dd
+            - @building.contractors.each_with_index do |contractor|
+              = "#{contractor.name}"
+              %br
+    .clearfix
+
+  - if @building.nearby?
+    .fmap-panel.fmap-panel-wide.fmap-panel-buildings
+      .fmap-panel-body
+        - @building.nearby.each_with_index do |nearby_building, index|
+          .fmap-item
+            = link_to building_path(nearby_building), target: '_blank', class: "fmap-item-link" do
+              .fmap-item-wrap
+                .fmap-item-info
+                  .fmap-item-number= index.next
+                  .fmap-item-summary
+                    .fmap-item-name= nearby_building.name
+                    %p= "#{nearby_building.region}, #{nearby_building.district}, #{nearby_building.locality}"
+                .fmap-item-controls
+                  .fmap-item-button-broadcast{class: nearby_building.status}
+                    %span.fmap-broadcast-name= t("status.#{nearby_building.status}")
+                .clearfix

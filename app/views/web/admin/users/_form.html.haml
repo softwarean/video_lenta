@@ -1,0 +1,12 @@
+= simple_form_for([:admin, @user]) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :email
+    = f.input :password
+    = f.input :password_confirmation
+    = f.association :regions, input_html: { class: 'regions_select' }
+    = f.input :role, include_blank: false, input_html: { class: 'role_select' }
+
+  .form-actions
+    = f.button :submit

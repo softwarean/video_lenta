@@ -1,0 +1,29 @@
+.fmap-navbar
+  .fareast-row
+    .fareast-filter-row
+
+      .fmap-navbar-control
+        %select.fmap-filter-select{"ng-model" => "broadcastState", "ng-change" => "searchByQuery()"}
+          %option{"ng-repeat" => "broadcaststate in broadcaststates", "ng-selected" => "broadcaststate.value == broadcastState", "value" => "{{broadcaststate.value}}"} {{broadcaststate.name}}
+
+      .fmap-navbar-control
+        %select.fmap-filter-select{"ng-model" => "regionId", "ng-change" => "selectRegion()"}
+          %option{value: ""} All regions
+          %option{"ng-repeat" => "region in regions", "ng-selected" => "region.id == regionId", "value" => "{{region.id}}"} {{region.name}}
+
+      .fmap-navbar-control
+        %select.fmap-filter-select{"ng-model" => "districtId", "ng-change" => "selectDistrict()", "ng-disabled" => "!regionId"}
+          %option{value: "", "ng-selected" => "!districtId"} All areas
+          %option{"ng-repeat" => "district in districts", "ng-selected" => "district.id == districtId", "value" => "{{district.id}}"} {{district.name}}
+
+      .fmap-navbar-control
+        %select.fmap-filter-select{"ng-model" => "localityName", "ng-change" => "searchByQuery()", "ng-disabled" => "!districtId"}
+          %option{value: "", "ng-selected" => "!localityName"} All cities
+          %option{"ng-repeat" => "locality in localities", "ng-selected" => "locality == localityName", "value" => "{{locality}}"} {{locality}}
+
+      .fmap-navbar-control.fmap-navbar-search-control
+        %form.fmap-search-form{"ng-submit" => "searchByQuery()"}
+          %input{type: "text", placeholder: "Search", "ng-model" => "queryString"}
+          %button.fmap-search-button{type: "submit"}
+
+      .clearfix
